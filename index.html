@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <style>
+        body{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-family: sans-serif;
+        }
+         .center {
+
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 13em;
+            margin: 20px;
+        }
+
+        h1 {
+            color: rgb(8, 88, 12);
+            text-decoration: underline;
+        }
+
+        #add{
+            margin-top: 20px;
+            background-color: rgb(236, 23, 225);
+            padding: 5px ;
+            border: 1px solid black;
+            border-radius: 50px;
+            color: rgb(255, 255, 255);
+            font-weight: 500;
+            box-shadow: 4px 4px 9px 0px #000;
+        }
+        #text{
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 0.9em;
+            background-color: rgb(0, 0, 0);
+            color: #fff;
+            border: #000;
+            
+        }
+        #my-list li{
+            font-size: large;
+            font-weight: 900;
+            color: rgb(8, 66, 241);
+        }
+        .remove {
+            background-color: white;
+            margin-left: 5px;
+            color: red;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <h1>My To Do List</h1>
+        <input id="text" type="text" placeholder="Enter your items">
+        <button id="add">Add</button>
+        <ol id="my-list"></ol>
+    </div>
+
+    <script>
+
+        $(function () {
+            $("#add").click(function () {
+                var val = $("input").val();
+
+                if (val !== "") {
+                    var elm = $("<li></li>").text(val);
+                    $(elm).append("<button class='remove'> X </button>");
+                    $('#my-list').append(elm);
+                    $("input").val("");
+                    $(".remove").click(function () {
+                        $(this).parent().remove()
+                    })
+                }
+
+            });
+        });
+    </script>
+</body>
+
+</html>
